@@ -1,15 +1,15 @@
 import React from 'react';
 import logo from '../../assets/logo.png';
-import { Container } from './headerStyled'
-
+import { ContainerHeader } from './headerStyled'
 
 
 const Header = () => {
     return (
-        <>
+        <ContainerHeader>
+            <button>botao</button>
             <img src={logo}></img>
-            <button>Pokèdex</button>
-        </>
+            <button>Pokedex</button>
+        </ContainerHeader>
     )
 
 
