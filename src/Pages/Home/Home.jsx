@@ -1,12 +1,10 @@
 import Header from "../../Components/Header/Header"
-//import { CardsContainer } from "./homeStyled"
+import { Container } from "./homeStyled"
 import PokemonCard from "../../Components/PokemonCard/PokemonCard"
 
-const Home = ({allPokemons}) => {
+const Home = () => {
     
-    console.log(allPokemons);
-
-   const render = () => {
+    const render = () => {
         const result = allPokemons.map((pokemon, i) => {
         return <PokemonCard key={i} pokemon={pokemon} getAllPokemons={getAllPokemons} />
     }) 
@@ -15,12 +13,12 @@ const Home = ({allPokemons}) => {
   }
 
     return (
-        <>
+        <Container>
            <Header />
            <h1>Home</h1>  
            {render()}
 
-        </>
+        </Container>
     )
 
 }
