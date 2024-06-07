@@ -45,6 +45,7 @@ const GlobalState = (props) => {
 
   const data = {
     allPokemons,
+    pokedex,
     setAllPokemons,
     addToPokedex,
     removeFromPokedex,

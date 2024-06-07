@@ -10,6 +10,7 @@ const Header = () => {
     const navigate = useNavigate();
 
     const renderHeader = () => {
+        /* 
         switch (location.pathname){
             case "/":
                 return (
@@ -42,8 +43,8 @@ const Header = () => {
                         <img>{logo}</img>
                     </>
                 );
-        }
-    }
+        }*/
+    } 
 
     return (
         <ContainerHeader>
