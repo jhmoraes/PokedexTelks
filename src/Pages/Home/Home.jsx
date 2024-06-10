@@ -1,27 +1,27 @@
 import Header from "../../Components/Header/Header"
 import { Container } from "./homeStyled"
-import PokemonCard from "../../Components/PokemonCard/PokemonCard"
 import { useContext } from "react";
 import GlobalStateContext from "../../global/GlobalStateContext";
+import PokemonCard from "../../Components/PokemonCard/PokemonCard"
 
-const Home = () => {
+const Home = (props) => {
 
-    const {allPokemons} = useContext(GlobalStateContext);
+    const { allPokemons, pokedex, addToPokedex } = useContext(GlobalStateContext);
 
-    const render = () => {
-        const result = allPokemons.map((pokemon) => {
-            return <PokemonCard pokemon={pokemon} />
-        })  
-
-        return result
-    }
+    const filteredPokeList = () =>
+        allPokemons.filter((pokemonInList) =>
+            !pokedex.find((pokemonInPokedex) => pokemonInList.name === pokemonInPokedex.name)
+    );
 
     return (
         <Container>
            <Header />
            <h1>Todos os Pokémons</h1>  
-           {render()}
-
+           <section>
+            {filteredPokeList().map((pokemon) => (
+                <PokemonCard key={pokemon.url} pokemonUrl={pokemon.url} addToPokedex={addToPokedex} />
+            ))}
+           </section>
         </Container>
     )
 
