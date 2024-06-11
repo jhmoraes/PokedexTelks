@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../../assets/logo.png';
 import { ContainerHeader } from './headerStyled'
 import { useLocation, useNavigate } from 'react-router';
+import { goToPokemonList, goToHomePage } from '../../Routes/coordinator'
 
 
 const Header = () => {
@@ -10,12 +11,11 @@ const Header = () => {
     const navigate = useNavigate();
 
     const renderHeader = () => {
-        /* 
         switch (location.pathname){
             case "/":
                 return (
                     <>
-                        <img>{logo}</img>
+                        <img src={logo} />
                         <button onClick={() => goToPokemonList(navigate)}>Pokédex</button>
                     </>
                 );
@@ -23,14 +23,14 @@ const Header = () => {
                 return (
                     <>
                         <a onClick={() => goToHomePage(navigate) }>Todos Pokémons</a>
-                        <img>{logo}</img>
+                        <img src={logo} />
                     </>
                 );
             case "/pokemondetail":
                 return (
                     <>
                         <a onClick={() => goToHomePage(navigate) }>Todos Pokémons</a>
-                        <img>{logo}</img>
+                        <img src={logo} />
                         <button>Excluir da Pokédex</button>
                     </>
                 );
@@ -40,10 +40,10 @@ const Header = () => {
                         <button onClick={() => goToHomePage(navigate)}>
                             Voltar para página inicial
                         </button>
-                        <img>{logo}</img>
+                        <img src={logo} />
                     </>
                 );
-        }*/
+        }
     } 
 
     return (

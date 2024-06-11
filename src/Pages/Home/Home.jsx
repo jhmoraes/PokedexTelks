@@ -20,7 +20,7 @@ const Home = (props) => {
             <h1>Todos os Pokémons</h1>
             <section>
                 {filteredPokeList().map((pokemon) => (
-                    < PokemonCard key={pokemon.url} pokemonUrl={pokemon.url} addToPokedex={addToPokedex} cardColor={getColors(pokemon.type[0].type.name)} />
+                    < PokemonCard key={pokemon.url} pokemonUrl={pokemon.url} addToPokedex={addToPokedex} />
                 ))}
             </section>
         </Container>

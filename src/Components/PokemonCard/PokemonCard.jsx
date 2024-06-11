@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
-import { Container, PokemonName, PokemonNumber } from './pokemonCardStyled'
+import { Container, PokemonName, PokemonNumber, PokemonType, TypesContainer } from './pokemonCardStyled'
 import { useLocation, useNavigate } from "react-router"
 import axios from "axios"
 import { goToPokemonDetail } from "../../Routes/coordinator.js"
+import { getTypes } from "../../utils/ReturnPokemonType.js"
+import { type } from "@testing-library/user-event/dist/type/index.js"
 
 const PokemonCard = (props) => {
 
@@ -33,11 +35,14 @@ const PokemonCard = (props) => {
     };
 
     console.log(pokemon)
-
+    
     return (
         <Container color={cardColor}>
             <PokemonNumber>{pokemon.id}</PokemonNumber>
             <PokemonName>{pokemon.name}</PokemonName>
+            <TypesContainer>
+                
+            </TypesContainer>
             <img src={pokemon.sprites?.front_default} alt={pokemon.name} />
             <div>
                 {location.pathname === "/" ? (
