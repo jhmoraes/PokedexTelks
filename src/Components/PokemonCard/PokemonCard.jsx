@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react"
-import { Container, PokemonName, PokemonNumber, PokemonType, TypesContainer } from './pokemonCardStyled'
+import { Container, PokemonName, PokemonNumber, CatchButton, TypesContainer, Pokeball } from './pokemonCardStyled'
 import { useLocation, useNavigate } from "react-router"
 import axios from "axios"
 import { goToPokemonDetail } from "../../Routes/coordinator.js"
 import { getTypes } from "../../utils/ReturnPokemonType.js"
-import { type } from "@testing-library/user-event/dist/type/index.js"
+import { getColors } from "../../utils/ReturnCardColor.js"
+import pokeball from "../../assets/pngwing 2.png";
 
 const PokemonCard = (props) => {
 
-    const { cardColor, pokemonUrl, addToPokedex, removeFromPokedex } = props;
+    const { pokemonUrl, addToPokedex, removeFromPokedex } = props;
 
     // hook para saber nosso pathe atual
     const location = useLocation();
@@ -34,17 +35,17 @@ const PokemonCard = (props) => {
             });
     };
 
-    console.log(pokemon)
-    
+    console.log(pokemon.types&&pokemon.types)
+  
     return (
-        <Container color={cardColor}>
-            <PokemonNumber>{pokemon.id}</PokemonNumber>
+        <Container color={getColors(pokemon.types&&pokemon.types[0].type.name)}>
+            <PokemonNumber>#{pokemon.id}</PokemonNumber>
             <PokemonName>{pokemon.name}</PokemonName>
             <TypesContainer>
-                
+
             </TypesContainer>
             <img src={pokemon.sprites?.front_default} alt={pokemon.name} />
-            <div>
+            <CatchButton>
                 {location.pathname === "/" ? (
                     <button onClick={() => addToPokedex(pokemon)}>
                         Adcionar à Pokedex
@@ -54,14 +55,13 @@ const PokemonCard = (props) => {
                         Remover da Pokedex
                     </button>
                 )}
-
-                <button onClick={() => goToPokemonDetail(navigate, pokemon.name)}>
+            </CatchButton>
+            <button onClick={() => goToPokemonDetail(navigate, pokemon.name)}>
                     Ver detalhes
-                </button>
-            </div>
+            </button>
+           <Pokeball src={pokeball} alt="pokeball" />
         </Container>
     )
-
 }
 
 export default PokemonCard

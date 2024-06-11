@@ -3,6 +3,7 @@ import logo from '../../assets/logo.png';
 import { ContainerHeader } from './headerStyled'
 import { useLocation, useNavigate } from 'react-router';
 import { goToPokemonList, goToHomePage } from '../../Routes/coordinator'
+import Button from '@mui/material/Button';
 
 
 const Header = () => {
@@ -16,7 +17,7 @@ const Header = () => {
                 return (
                     <>
                         <img src={logo} />
-                        <button onClick={() => goToPokemonList(navigate)}>Pokédex</button>
+                        <Button variant="contained" size="large" onClick={() => goToPokemonList(navigate)}>Pokédex</Button>;
                     </>
                 );
             case "/pokemondetail":
