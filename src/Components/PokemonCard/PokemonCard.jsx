@@ -35,14 +35,15 @@ const PokemonCard = (props) => {
             });
     };
 
-    console.log(pokemon.types&&pokemon.types)
-  
+    console.log(pokemon)
+
     return (
-        <Container color={getColors(pokemon.types&&pokemon.types[0].type.name)}>
+        <Container color={getColors(pokemon.types && pokemon.types[0].type.name)}>
             <PokemonNumber>#{pokemon.id}</PokemonNumber>
             <PokemonName>{pokemon.name}</PokemonName>
             <TypesContainer>
-
+                {pokemon.types && <img src={getTypes(pokemon.types && pokemon.types[0].type.name)} />}
+                {pokemon.types && <img src={getTypes(pokemon.types && pokemon.types[1] && pokemon.types[1].type.name)} />}
             </TypesContainer>
             <img src={pokemon.sprites?.front_default} alt={pokemon.name} />
             <CatchButton>
@@ -57,9 +58,9 @@ const PokemonCard = (props) => {
                 )}
             </CatchButton>
             <button onClick={() => goToPokemonDetail(navigate, pokemon.name)}>
-                    Ver detalhes
+                Ver detalhes
             </button>
-           <Pokeball src={pokeball} alt="pokeball" />
+            <Pokeball src={pokeball} alt="pokeball" />
         </Container>
     )
 }

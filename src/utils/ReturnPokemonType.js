@@ -17,46 +17,46 @@ import rock from "../assets/pokemon-types/rock.png";
 import steel from "../assets/pokemon-types/steel.png";
 import water from "../assets/pokemon-types/water.png";
 
-  export const getTypes = (type) => {
-    switch(type) {
-      case "Bug":
-        return bug;
-      case "Dark":
-        return dark;
-      case "Dragon":
-        return dragon;
-      case "Electric":
-        return electric;
-      case "Fairy":
-        return fairy;
-      case "Fighting":
-        return fighting;
-      case "Fire":
-        return fire;
-      case "Flying":
-        return flying;
-      case "Ghost":
-        return ghost;
-      case "Grass":
-        return grass;
-      case "Ground":
-        return ground;
-      case "Ice":
-        return ice;
-      case "Normal":
-        return normal;
-      case "Poison":
-        return poison;
-      case "Psychic":
-        return psychic;
-      case "Rock":
-        return rock;
-      case "Steel":
-        return steel;
-      case "Water":
-        return water;
-      default:
-        return water;
-    }
-  };
+export const getTypes = (type) => {
+  switch (type) {
+    case "bug":
+      return bug;
+    case "dark":
+      return dark;
+    case "dragon":
+      return dragon;
+    case "electric":
+      return electric;
+    case "fairy":
+      return fairy;
+    case "fighting":
+      return fighting;
+    case "fire":
+      return fire;
+    case "flying":
+      return flying;
+    case "ghost":
+      return ghost;
+    case "grass":
+      return grass;
+    case "ground":
+      return ground;
+    case "ice":
+      return ice;
+    case "normal":
+      return normal;
+    case "poison":
+      return poison;
+    case "psychic":
+      return psychic;
+    case "rock":
+      return rock;
+    case "steel":
+      return steel;
+    case "water":
+      return water;
+    default:
+      return undefined;
+  }
+};
 
