@@ -4,7 +4,7 @@ const PokemonDetailPage = () => {
     return (
         <>
             <Header />
-            <h1>PokemonDetailPage</h1>
+            <h1>Detalhes</h1>
         </>
 
     )

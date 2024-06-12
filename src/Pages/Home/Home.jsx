@@ -12,6 +12,8 @@ const Home = () => {
         allPokemons.filter((pokemonInList) =>
             !pokedex.find((pokemonInPokedex) => pokemonInList.name === pokemonInPokedex.name)
         );
+    
+        console.log(allPokemons)
 
     return (
         <Container>

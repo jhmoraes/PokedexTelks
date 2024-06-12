@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Container, PokemonName, PokemonNumber, CatchButton, TypesContainer, Pokeball } from './pokemonCardStyled'
+import { Container, PokemonName, PokemonNumber, CatchButton, TypesContainer, Pokeball, Pokemon } from './pokemonCardStyled'
 import { useLocation, useNavigate } from "react-router"
 import axios from "axios"
 import { goToPokemonDetail } from "../../Routes/coordinator.js"
@@ -35,31 +35,33 @@ const PokemonCard = (props) => {
             });
     };
 
-    console.log(pokemon)
-
     return (
         <Container color={getColors(pokemon.types && pokemon.types[0].type.name)}>
-            <PokemonNumber>#{pokemon.id}</PokemonNumber>
-            <PokemonName>{pokemon.name}</PokemonName>
-            <TypesContainer>
-                {pokemon.types && <img src={getTypes(pokemon.types && pokemon.types[0].type.name)} />}
-                {pokemon.types && <img src={getTypes(pokemon.types && pokemon.types[1] && pokemon.types[1].type.name)} />}
-            </TypesContainer>
-            <img src={pokemon.sprites?.front_default} alt={pokemon.name} />
-            <CatchButton>
-                {location.pathname === "/" ? (
-                    <button onClick={() => addToPokedex(pokemon)}>
-                        Adcionar à Pokedex
-                    </button>
-                ) : (
-                    <button onClick={() => removeFromPokedex(pokemon)}>
-                        Remover da Pokedex
-                    </button>
-                )}
-            </CatchButton>
-            <button onClick={() => goToPokemonDetail(navigate, pokemon.name)}>
-                Ver detalhes
-            </button>
+            <div>
+                <PokemonNumber>{pokemon.id}</PokemonNumber>
+                <PokemonName>{pokemon.name}</PokemonName>
+                <TypesContainer>
+                    {pokemon.types && <img src={getTypes(pokemon.types && pokemon.types[0].type.name)} />}
+                    {pokemon.types && <img src={getTypes(pokemon.types && pokemon.types[1] && pokemon.types[1].type.name)} />}
+                </TypesContainer>
+                <a onClick={() => goToPokemonDetail(navigate, pokemon.id)}>
+                    Ver detalhes
+                </a>
+            </div>
+            <div>
+                <Pokemon src={pokemon.sprites?.front_default} alt={pokemon.name} />
+                <CatchButton>
+                    {location.pathname === "/" ? (
+                        <text onClick={() => addToPokedex(pokemon)}>
+                            Adcionar à Pokedex
+                        </text>
+                    ) : (
+                        <text onClick={() => removeFromPokedex(pokemon)}>
+                            Remover da Pokedex
+                        </text>
+                    )}
+                </CatchButton>
+            </div>
             <Pokeball src={pokeball} alt="pokeball" />
         </Container>
     )

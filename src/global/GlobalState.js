@@ -24,23 +24,45 @@ const GlobalState = (props) => {
       });
   };
 
+  // Adiciona o pokemon na Pokedex
   const addToPokedex = (pokemonToAdd) => {
     const isAlreadyOnPokedex = pokedex.find(
       (pokemonInPokedex) => pokemonInPokedex.name === pokemonToAdd.name
     );
 
     if (!isAlreadyOnPokedex) {
-      const newPokedex = [...pokedex, pokemonToAdd];
-      setPokedex(newPokedex);
+      setPokedex([...pokedex, pokemonToAdd]);
     }
   };
 
-  const removeFromPokedex = (pokemonToRemove) => {
-    const newPokedex = pokedex.filter(
-      (pokemonInPokedex) => pokemonInPokedex.name !== pokemonToRemove.name
-    );
+  // Salva a Pokedex no Local Storage
+  const saveLocalStorage = () => {
+    const insertToLocalStorage = JSON.stringify(pokedex);
+    localStorage.setItem("pokemons", insertToLocalStorage);
+  };
 
-    setPokedex(newPokedex);
+  useEffect(() => {
+    pokedex.length > 0 && saveLocalStorage();
+  }, [pokedex]);
+
+  const getItensLocalStorage = () => {
+    const pokemonsLocalStorage = localStorage.getItem("pokemons");
+    const pokemonsArray = JSON.parse(pokemonsLocalStorage);
+    pokemonsArray && setPokedex(pokemonsArray);
+  };
+
+  useEffect(() => {
+    getItensLocalStorage();
+  }, []);
+
+  const removeFromPokedex = (pokemonToRemove) => {
+    /* const newPokedex = pokedex.filter(
+      (pokemonInPokedex) => pokemonInPokedex.name !== pokemonToRemove.name
+    ); */
+
+    localStorage.removeItem("lista", pokemonToRemove.name);
+
+    setPokedex();
   };
 
   const data = {
@@ -48,6 +70,7 @@ const GlobalState = (props) => {
     pokedex,
     setAllPokemons,
     addToPokedex,
+    getItensLocalStorage,
     removeFromPokedex,
   };
 
