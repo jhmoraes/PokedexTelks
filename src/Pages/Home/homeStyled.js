@@ -10,7 +10,8 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-family: Arial, Helvetica, sans-serif
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 48px;
   color: #ffffff;
+  padding: 50px 0 0 20px;
 `;

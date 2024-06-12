@@ -17,31 +17,29 @@ const Header = () => {
                 return (
                     <>
                         <img src={logo} />
-                        <Button variant="contained" size="large" onClick={() => goToPokemonList(navigate)}>Pokédex</Button>;
+                        <Button variant="contained" size="large" onClick={() => goToPokemonList(navigate)}>Pokédex</Button>
                     </>
                 );
-            case "/pokemondetail":
+            case "/pokemonlist":
                 return (
                     <>
                         <a onClick={() => goToHomePage(navigate) }>Todos Pokémons</a>
                         <img src={logo} />
                     </>
                 );
-            case "/pokemondetail":
+            case "/pokemondetails#{id}":
                 return (
                     <>
                         <a onClick={() => goToHomePage(navigate) }>Todos Pokémons</a>
                         <img src={logo} />
-                        <button>Excluir da Pokédex</button>
+                        <Button variant="contained" size="large">Excluir da Pokédex</Button>
                     </>
                 );
             default:
                 return (
                     <>
-                        <button onClick={() => goToHomePage(navigate)}>
-                            Voltar para página inicial
-                        </button>
                         <img src={logo} />
+                        <Button variant="contained" size="large" onClick={() => goToPokemonList(navigate)}>Pokédex</Button>;
                     </>
                 );
         }
