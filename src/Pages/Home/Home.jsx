@@ -1,11 +1,10 @@
 import Header from "../../Components/Header/Header"
-import { Container } from "./homeStyled"
+import { Container, Title } from "./homeStyled"
 import { useContext } from "react";
 import GlobalStateContext from "../../global/GlobalStateContext";
 import PokemonCard from "../../Components/PokemonCard/PokemonCard"
-import { getColors } from "../../utils/ReturnCardColor"
 
-const Home = (props) => {
+const Home = () => {
 
     const { allPokemons, pokedex, addToPokedex } = useContext(GlobalStateContext);
 
@@ -17,7 +16,7 @@ const Home = (props) => {
     return (
         <Container>
             <Header />
-            <h1>Todos os Pokémons</h1>
+            <Title>Todos os Pokémons</Title>
             <section>
                 {filteredPokeList().map((pokemon) => (
                     < PokemonCard key={pokemon.url} pokemonUrl={pokemon.url} addToPokedex={addToPokedex} />
