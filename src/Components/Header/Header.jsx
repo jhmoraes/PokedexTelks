@@ -6,13 +6,14 @@ import { goToPokemonList, goToHomePage } from '../../Routes/coordinator'
 import Button from '@mui/material/Button';
 
 
-const Header = () => {
+const Header = (props) => {
 
     const location = useLocation();
     const navigate = useNavigate();
+    const { removeFromPokedex } = props;
 
     const renderHeader = () => {
-        switch (location.pathname){
+        switch (location.pathname) {
             case "/":
                 return (
                     <>
@@ -23,16 +24,16 @@ const Header = () => {
             case "/pokemonlist":
                 return (
                     <>
-                        <a onClick={() => goToHomePage(navigate) }>Todos Pokémons</a>
+                        <a onClick={() => goToHomePage(navigate)}>Todos Pokémons</a>
                         <img src={logo} />
                     </>
                 );
             case "/pokemondetails#{id}":
                 return (
                     <>
-                        <a onClick={() => goToHomePage(navigate) }>Todos Pokémons</a>
+                        <a onClick={() => goToHomePage(navigate)}>Todos Pokémons</a>
                         <img src={logo} />
-                        <Button variant="contained" size="large">Excluir da Pokédex</Button>
+                        <Button variant="contained" size="large" background="#ff6262" onClick={() => removeFromPokedex()}>Excluir da Pokédex</Button>
                     </>
                 );
             default:
@@ -43,7 +44,7 @@ const Header = () => {
                     </>
                 );
         }
-    } 
+    }
 
     return (
         <ContainerHeader>

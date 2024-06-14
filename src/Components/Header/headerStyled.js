@@ -10,18 +10,18 @@ export const ContainerHeader = Styled.div`
   
   a {
     position: relative;
-    left: 20%;
+    //left: 20%;
   }
 
   img {
     width: 15%;
     position: relative;
-    left: 20%;
+    //left: 10%;
   }
 
   Button{
     position: relative;
-    right: 1px;
+    //right: 1px;
   }
 `;
 

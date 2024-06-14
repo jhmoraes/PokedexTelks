@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Container, PokemonName, PokemonNumber, CatchButton, TypesContainer, Pokeball, Pokemon } from './pokemonCardStyled'
 import { useLocation, useNavigate } from "react-router"
 import axios from "axios"
@@ -6,10 +6,12 @@ import { goToPokemonDetail } from "../../Routes/coordinator.js"
 import { getTypes } from "../../utils/ReturnPokemonType.js"
 import { getColors } from "../../utils/ReturnCardColor.js"
 import pokeball from "../../assets/pngwing 2.png";
+import GlobalStateContext from "../../global/GlobalStateContext.js"
 
 const PokemonCard = (props) => {
 
-    const { pokemonUrl, addToPokedex, removeFromPokedex } = props;
+    const { pokemonUrl } = props;
+    const { addToPokedex, removeFromPokedex } = useContext(GlobalStateContext);
 
     // hook para saber nosso pathe atual
     const location = useLocation();
@@ -50,20 +52,20 @@ const PokemonCard = (props) => {
             </div>
             <div>
                 <Pokemon src={pokemon.sprites?.front_default} alt={pokemon.name} />
-                <CatchButton>
+                <div>
                     {location.pathname === "/" ? (
-                        <text onClick={() => addToPokedex(pokemon)}>
+                        <CatchButton onClick={() => addToPokedex(pokemon)}>
                             Adcionar à Pokedex
-                        </text>
+                        </CatchButton>
                     ) : (
-                        <text onClick={() => removeFromPokedex(pokemon)}>
-                            Remover da Pokedex
-                        </text>
+                        <CatchButton onClick={() => removeFromPokedex(pokemon.name)}>
+                            Excluir
+                        </CatchButton>
                     )}
-                </CatchButton>
+                </div>
             </div>
             <Pokeball src={pokeball} alt="pokeball" />
-        </Container>
+        </Container >
     )
 }
 
