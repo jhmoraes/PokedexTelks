@@ -40,7 +40,7 @@ const Header = (props) => {
                 return (
                     <>
                         <img src={logo} />
-                        <Button variant="contained" size="large" onClick={() => goToPokemonList(navigate)}>Pokédex</Button>;
+                        <Button variant="contained" size="large" onClick={() => goToPokemonList(navigate)}>Pokédex</Button>
                     </>
                 );
         }
