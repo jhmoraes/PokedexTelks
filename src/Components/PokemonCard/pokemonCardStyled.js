@@ -39,6 +39,7 @@ export const PokemonType = styled.img`
 export const TypesContainer = styled.div`
   margin-bottom: 52px;
 `;
+
 export const Pokeball = styled.img`
   position: absolute;
   top: 0;

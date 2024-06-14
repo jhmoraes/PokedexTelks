@@ -9,8 +9,6 @@ const PokemonListPage = () => {
 
     const { pokedex } = useContext(GlobalStateContext)
 
-    console.log(`${BASE_URL}/1`)
-    
     return (
         <Container>
             <Header />
@@ -21,7 +19,6 @@ const PokemonListPage = () => {
                 ))}
             </section>
         </Container>
-
     )
 }
 

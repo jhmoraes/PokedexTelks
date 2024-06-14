@@ -55,14 +55,13 @@ const GlobalState = (props) => {
     getItensLocalStorage();
   }, []);
 
-  const removeFromPokedex = (pokemonToRemove) => {
-    /* const newPokedex = pokedex.filter(
-      (pokemonInPokedex) => pokemonInPokedex.name !== pokemonToRemove.name
-    ); */
+  const removeFromPokedex = (pokemonName) => {
+    const newList = localStorage.getItem("pokemons");
+    const getPokemon = JSON.parse(newList)
+    const newPokedex = getPokemon.filter((pokemon) => pokemon.name !== pokemonName)
+    newPokedex.length === 0 && localStorage.removeItem("pokemons")
+    setPokedex(newPokedex)
 
-    localStorage.removeItem("lista", pokemonToRemove.name);
-
-    setPokedex();
   };
 
   const data = {
