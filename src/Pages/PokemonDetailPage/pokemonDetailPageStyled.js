@@ -41,8 +41,8 @@ export const ImgFront = styled.div`
   grid-row: 1 / 3;
   grid-column: 1 / 2;
   border-radius: 5px;
-  align-self: center;
-  justify-self: center;
+  justify-items: center;
+  align-items: center;
 `;
 
 export const ImgBack = styled.div`

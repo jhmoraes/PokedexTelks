@@ -28,7 +28,7 @@ const Header = (props) => {
                         <img src={logo} />
                     </>
                 );
-            case "/pokemondetails#{id}":
+            case `/pokemondetails`:
                 return (
                     <>
                         <a onClick={() => goToHomePage(navigate)}>Todos Pokémons</a>

@@ -2,36 +2,49 @@ import Header from "../../Components/Header/Header"
 import { Container, ImgLogo, Title, DetailsCard, BaseStats, ImgFront, ImgBack, NameCard, MoviesCard, ImageLarge } from "./pokemonDetailPageStyled"
 import logo from "../../assets/pngwing 2.png"
 import { useParams } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import GlobalStateContext from "../../global/GlobalStateContext";
+import axios from "axios";
 
 const PokemonDetailPage = () => {
 
-    const {allPokemons} = useContext(GlobalStateContext)
+    const { allPokemons } = useContext(GlobalStateContext)
+    const [pokemonDetails, setPokemonDetails] = useState([]);
 
     const params = useParams();
     const pokemonName = params;
 
     const pokemon = allPokemons.filter((pokemonList) => pokemonList.name === pokemonName.name)
 
-    console.log(pokemon)
+    useEffect(() => {
+        getInfosPokemon()
+    }, [])
 
+    const getInfosPokemon = () => {
+        axios.get(pokemon[0].url)
+            .then((response) => {
+                setPokemonDetails(response.data)
+            })
+            .catch((err) => {
+                console.log(err.response)
+            });
+    }
 
-    
-
+    console.log(pokemonDetails)
 
     return (
         <>
             <Header />
             <Container>
-                <ImgLogo src={logo}/>
+                <ImgLogo src={logo} />
                 <Title>Detalhes</Title>
                 <DetailsCard >
                     <ImgFront>
-                      Front Imagem
+                        <img src={pokemonDetails.sprites?.front_default} />
                     </ImgFront>
                     <ImgBack>
-                        Back Imagem
+                        <img src={pokemonDetails.sprites?.
+                            back_default} />
                     </ImgBack>
                     <BaseStats>
                         Base Stat
@@ -45,7 +58,7 @@ const PokemonDetailPage = () => {
                     <ImageLarge>
                         Imagem grande do Pokemon
                     </ImageLarge>
-                </DetailsCard > 
+                </DetailsCard >
             </Container>
         </>
     )
