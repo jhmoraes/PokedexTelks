@@ -14,27 +14,34 @@ const PokemonDetailPage = () => {
     const { allPokemons } = useContext(GlobalStateContext)
     const [pokemonDetails, setPokemonDetails] = useState([]);
 
+    //Pega o nome do pokemon passado por URL
     const params = useParams();
-    const pokemonName = params;
 
-    const pokemon = allPokemons.filter((pokemonList) => pokemonList.name === pokemonName.name)
+    //Através da comparação do nome enviado com a lista de todos os pokemons, consegue-se o nome e a url dos dados do pokemon seleciionado.
+    const pokemon = allPokemons.filter((pokemonList) => pokemonList.name === params.name);
+    
+    //Extrai-se apenas a url com todos os dados do pokemon.
+    const urlPokemon = pokemon.map((url) => pokemon[0].url)
 
     useEffect(() => {
         getInfosPokemon()
     }, [])
 
+    //Com o Axios, pega todas as informações do pokemon e as guarda dentro da variável estado (pokemonDetails).
     const getInfosPokemon = () => {
-        axios.get(pokemon[0].url)
+        axios.get(urlPokemon)
             .then((response) => {
                 setPokemonDetails(response.data)
             })
             .catch((err) => {
                 console.log(err.response)
             });
-    }
+    } 
 
-    console.log(pokemonDetails)
-    //https://mui.com/material-ui/react-table/
+    console.log(pokemonDetails.stats)
+
+    const total = pokemonDetails.map((value) => (value.base_stat + total))
+    console.log(total)
 
     return (
         <>
@@ -49,20 +56,43 @@ const PokemonDetailPage = () => {
                         <b>Base Stat</b>
                         <TableContainer>
                             <Table sx={{ ninWidth: 650 }} arial-label="simple table">
-                                <TableRow>
-                                    <TableCell align="center">Teste 1</TableCell>
-                                    <TableCell align="center">Teste 2</TableCell>
-                                    <TableCell align="center">Teste 3</TableCell>
-                                </TableRow>
                                 <TableBody>
+                                   <TableRow>
+                                        <TableCell align="right">HP</TableCell>
+                                        <TableCell align="right">{pokemonDetails.stats && pokemonDetails.stats[0].base_stat}</TableCell>
+                                        <TableCell align="left>"></TableCell>
+                                    </TableRow>
                                     <TableRow>
-                                        <TableCell align="center">HP</TableCell>
-                                        <TableCell align="center">Attack</TableCell>
-                                        <TableCell align="center">Defense</TableCell>
-                                        <TableCell align="center">Sp. Atk</TableCell>
-                                        <TableCell align="center">Sp. Def</TableCell>
-                                        <TableCell align="center">Speed</TableCell>
-                                        <TableCell align="center">Total</TableCell>
+                                        <TableCell align="right">Attack</TableCell>
+                                        <TableCell align="right">{pokemonDetails.stats && pokemonDetails.stats[1].base_stat}</TableCell>
+                                        <TableCell align="left>"></TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell align="right">Defense</TableCell>
+                                        <TableCell align="right">{pokemonDetails.stats && pokemonDetails.stats[2].base_stat}</TableCell>
+                                        <TableCell align="left>"></TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell align="right">Sp. Atk</TableCell>
+                                        <TableCell align="right">{pokemonDetails.stats && pokemonDetails.stats[3].base_stat}</TableCell>
+                                        <TableCell align="left>"></TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell align="right">Sp. Def</TableCell>
+                                        <TableCell align="right">{pokemonDetails.stats && pokemonDetails.stats[4].base_stat}</TableCell>
+                                        <TableCell align="left>"></TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell align="right">Speed</TableCell>
+                                        <TableCell align="right">{pokemonDetails.stats && pokemonDetails.stats[5].base_stat}</TableCell>
+                                        <TableCell align="left>"></TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell align="right">Total</TableCell>
+                                        <TableCell align="right">{
+                                                
+                                            }</TableCell>
+                                        <TableCell align="left>"></TableCell>  
                                     </TableRow>
                                 </TableBody>
                             </Table>

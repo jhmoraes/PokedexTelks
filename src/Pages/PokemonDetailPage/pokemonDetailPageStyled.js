@@ -89,7 +89,7 @@ export const ImageLarge = styled.img`
   width: 193px;
   height: 193px;
   position: absolute;
-  top: 105px;
+  top: 150px;
   right: 0;
   z-index: 2;
 `;
