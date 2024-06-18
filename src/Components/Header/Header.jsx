@@ -34,7 +34,7 @@ const Header = (props) => {
                     <>
                         <Link component="button" color="inherit" onClick={() => goToHomePage(navigate)}>Todos Pokémons</Link>
                         <img src={logo} />
-                        <Button variant="contained" size="large" background="#ff6262" onClick={() => removeFromPokedex()}>Excluir da Pokédex</Button>
+                        <Button variant="contained" size="large" background="#ff6262" onClick={() => removeFromPokedex(name)}>Excluir da Pokédex</Button>
                     </>
                 );
             default:

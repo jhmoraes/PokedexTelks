@@ -1,5 +1,6 @@
+import React from "react";
 import Header from "../../Components/Header/Header"
-import { Container, ImgLogo, Title, DetailsCard, BaseStats, ImgFront, ImgBack, NameCard, MoviesCard, ImageLarge, PokemonNumber, PokemonName, TypesContainer } from "./pokemonDetailPageStyled"
+import { Container, ImgLogo, Title, DetailsCard, BaseStats, ImgFront, ImgBack, NameCard, MoviesCard, ImageLarge, PokemonNumber, PokemonName, TypesContainer, B } from "./pokemonDetailPageStyled"
 import logo from "../../assets/pngwing 2.png"
 import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
@@ -7,7 +8,7 @@ import GlobalStateContext from "../../global/GlobalStateContext";
 import axios from "axios";
 import { getTypes } from "../../utils/ReturnPokemonType.js"
 import { getColors } from "../../utils/ReturnCardColor.js"
-import { Table, TableBody, TableCell, TableContainer, TableRow } from "@mui/material";
+import { LinearProgress, Table, TableBody, TableCell, TableContainer, TableRow, Box } from "@mui/material";
 
 const PokemonDetailPage = () => {
 
@@ -19,7 +20,7 @@ const PokemonDetailPage = () => {
 
     //Através da comparação do nome enviado com a lista de todos os pokemons, consegue-se o nome e a url dos dados do pokemon seleciionado.
     const pokemon = allPokemons.filter((pokemonList) => pokemonList.name === params.name);
-    
+
     //Extrai-se apenas a url com todos os dados do pokemon.
     const urlPokemon = pokemon.map((url) => pokemon[0].url)
 
@@ -36,12 +37,9 @@ const PokemonDetailPage = () => {
             .catch((err) => {
                 console.log(err.response)
             });
-    } 
+    }
 
-    console.log(pokemonDetails.stats)
-
-    const total = pokemonDetails.map((value) => (value.base_stat + total))
-    console.log(total)
+    console.log(pokemonDetails.moves)
 
     return (
         <>
@@ -57,42 +55,54 @@ const PokemonDetailPage = () => {
                         <TableContainer>
                             <Table sx={{ ninWidth: 650 }} arial-label="simple table">
                                 <TableBody>
-                                   <TableRow>
+                                    <TableRow>
                                         <TableCell align="right">HP</TableCell>
                                         <TableCell align="right">{pokemonDetails.stats && pokemonDetails.stats[0].base_stat}</TableCell>
-                                        <TableCell align="left>"></TableCell>
+                                        <TableCell align="left>" sx={{ width: '120%' }}>
+                                            <LinearProgress variant="determinate" value={pokemonDetails.stats && pokemonDetails.stats[0].base_stat} />
+                                        </TableCell>
                                     </TableRow>
                                     <TableRow>
                                         <TableCell align="right">Attack</TableCell>
                                         <TableCell align="right">{pokemonDetails.stats && pokemonDetails.stats[1].base_stat}</TableCell>
-                                        <TableCell align="left>"></TableCell>
+                                        <TableCell align="left>" sx={{ width: '120%' }}>
+                                            <LinearProgress variant="determinate" value={pokemonDetails.stats && pokemonDetails.stats[1].base_stat} />
+                                        </TableCell>
                                     </TableRow>
                                     <TableRow>
                                         <TableCell align="right">Defense</TableCell>
                                         <TableCell align="right">{pokemonDetails.stats && pokemonDetails.stats[2].base_stat}</TableCell>
-                                        <TableCell align="left>"></TableCell>
+                                        <TableCell align="left>" sx={{ width: '120%' }}>
+                                            <LinearProgress variant="determinate" value={pokemonDetails.stats && pokemonDetails.stats[2].base_stat} />
+                                        </TableCell>
                                     </TableRow>
                                     <TableRow>
                                         <TableCell align="right">Sp. Atk</TableCell>
                                         <TableCell align="right">{pokemonDetails.stats && pokemonDetails.stats[3].base_stat}</TableCell>
-                                        <TableCell align="left>"></TableCell>
+                                        <TableCell align="left>" sx={{ width: '120%' }}>
+                                            <LinearProgress variant="determinate" value={pokemonDetails.stats && pokemonDetails.stats[3].base_stat} />
+                                        </TableCell>
                                     </TableRow>
                                     <TableRow>
                                         <TableCell align="right">Sp. Def</TableCell>
                                         <TableCell align="right">{pokemonDetails.stats && pokemonDetails.stats[4].base_stat}</TableCell>
-                                        <TableCell align="left>"></TableCell>
+                                        <TableCell align="left>" sx={{ width: '120%' }}>
+                                            <LinearProgress variant="determinate" value={pokemonDetails.stats && pokemonDetails.stats[4].base_stat} />
+                                        </TableCell>
                                     </TableRow>
                                     <TableRow>
                                         <TableCell align="right">Speed</TableCell>
                                         <TableCell align="right">{pokemonDetails.stats && pokemonDetails.stats[5].base_stat}</TableCell>
-                                        <TableCell align="left>"></TableCell>
+                                        <TableCell align="left>" sx={{ width: '120%' }}>
+                                            <LinearProgress variant="determinate" value={pokemonDetails.stats && pokemonDetails.stats[5].base_stat} />
+                                        </TableCell>
                                     </TableRow>
                                     <TableRow>
                                         <TableCell align="right">Total</TableCell>
                                         <TableCell align="right">{
-                                                
-                                            }</TableCell>
-                                        <TableCell align="left>"></TableCell>  
+                                            <b>{pokemonDetails.stats && pokemonDetails.stats.map(force => force.base_stat).reduce((prev, curr) => prev + curr, 0)}</b>
+                                        }</TableCell>
+                                        <TableCell align="left>"></TableCell>
                                     </TableRow>
                                 </TableBody>
                             </Table>
@@ -109,15 +119,18 @@ const PokemonDetailPage = () => {
                         </div>
                     </NameCard>
                     <MoviesCard>
-                        <div>
-
-                        </div>
+                        <B>Moves:</B>
+                        {pokemonDetails.moves && pokemonDetails.moves.slice(0, 5).map((move) => (
+                            <Box component="section" sx={{ p: 2, border: '1px dashed grey', borderRadius: 4 }}>
+                                {move.name}
+                            </Box>
+                        ))}
                     </MoviesCard>
                     <div>
                         <ImageLarge src={pokemonDetails.sprites?.front_default} />
                     </div>
                 </DetailsCard >
-            </Container>
+            </Container >
         </>
     )
 }

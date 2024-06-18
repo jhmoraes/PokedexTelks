@@ -20,7 +20,7 @@ export const Title = styled.div`
   font-family: Arial, Helvetica, sans-serif;
   font-size: 48px;
   color: #ffffff;
-  padding: 20px 0 20px 20px;
+  padding: 5px 0 0 5px;
 `;
 
 export const DetailsCard = styled.div`
@@ -36,8 +36,8 @@ export const DetailsCard = styled.div`
 
 export const ImgFront = styled.img`
   background-color: #ffffff;
-  width: 80%;
-  height: 80%;
+  width: 150px;
+  height: 150px;
   grid-row: 1 / 3;
   grid-column: 1 / 2;
   border-radius: 5px;
@@ -47,8 +47,8 @@ export const ImgFront = styled.img`
 
 export const ImgBack = styled.img`
   background-color: #ffffff;
-  width: 80%;
-  height: 80%;
+  width: 150px;
+  height: 150px;
   grid-row: 3 / 5;
   grid-column: 1 / 2;
   border-radius: 5px;
@@ -81,6 +81,7 @@ export const MoviesCard = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 5px;
+  padding: 20px
 `;
 
 export const ImageLarge = styled.img`
@@ -114,3 +115,7 @@ export const PokemonName = styled.h1`
 export const TypesContainer = styled.div`
   margin-bottom: 52px;
 `;
+
+export const B = styled.b`
+  gap: 10px;
+`
