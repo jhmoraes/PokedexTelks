@@ -10,7 +10,7 @@ export const getColors = (type) => {
       return "#F4D23B";
     case "fairy":
       return "#EC8FE6";
-    case "fFighting":
+    case "Fighting":
       return "#CE4069";
     case "fire":
       return "#EAAB7D";

@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from '../../assets/logo.png';
 import { ContainerHeader } from './headerStyled'
 import { useLocation, useNavigate } from 'react-router';
 import { goToPokemonList, goToHomePage } from '../../Routes/coordinator'
-import Button from '@mui/material/Button';
-
+import { useParams } from 'react-router-dom';
+import { Button, Link } from '@mui/material';
 
 const Header = (props) => {
 
     const location = useLocation();
     const navigate = useNavigate();
     const { removeFromPokedex } = props;
+    const name = useParams();
 
     const renderHeader = () => {
         switch (location.pathname) {
@@ -24,23 +25,23 @@ const Header = (props) => {
             case "/pokemonlist":
                 return (
                     <>
-                        <a onClick={() => goToHomePage(navigate)}>Todos Pokémons</a>
+                        <Link component="button" color="inherit" onClick={() => goToHomePage(navigate)}>Todos Pokémons</Link>
                         <img src={logo} />
                     </>
                 );
-            case "/pokemondetails#{id}":
+            case `/pokemondetails/${name.name}`:
                 return (
                     <>
-                        <a onClick={() => goToHomePage(navigate)}>Todos Pokémons</a>
+                        <Link component="button" color="inherit" onClick={() => goToHomePage(navigate)}>Todos Pokémons</Link>
                         <img src={logo} />
-                        <Button variant="contained" size="large" background="#ff6262" onClick={() => removeFromPokedex()}>Excluir da Pokédex</Button>
+                        <Button variant="contained" size="large" background="#ff6262" onClick={() => removeFromPokedex(name)}>Excluir da Pokédex</Button>
                     </>
                 );
             default:
                 return (
                     <>
                         <img src={logo} />
-                        <Button variant="contained" size="large" onClick={() => goToPokemonList(navigate)}>Pokédex</Button>;
+                        <Button variant="contained" size="large" onClick={() => goToPokemonList(navigate)}>Pokédex</Button>
                     </>
                 );
         }

@@ -46,7 +46,7 @@ const PokemonCard = (props) => {
                     {pokemon.types && <img src={getTypes(pokemon.types && pokemon.types[0].type.name)} />}
                     {pokemon.types && <img src={getTypes(pokemon.types && pokemon.types[1] && pokemon.types[1].type.name)} />}
                 </TypesContainer>
-                <a onClick={() => goToPokemonDetail(navigate, pokemon.id)}>
+                <a onClick={() => goToPokemonDetail(navigate, pokemon.name)}>
                     Ver detalhes
                 </a>
             </div>
