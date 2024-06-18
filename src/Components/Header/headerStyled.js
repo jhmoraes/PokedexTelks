@@ -8,7 +8,7 @@ export const ContainerHeader = Styled.div`
   justify-content: space-around;
   align-items: center;
   
-  a {
+  Link {
     position: relative;
     //left: 20%;
   }
@@ -21,30 +21,29 @@ export const ContainerHeader = Styled.div`
 
   Button{
     position: relative;
-    //right: 1px;
+    right: 1px;
   }
 `;
 
 /* export const ContainerHeader = Styled.div`
   background-color: #ffffff;
-  height: 15vh;
+  height: 150px;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 1;
+  grid-template-columns: 1fr 1fr 1fr;
+  //grid-template-rows: 1;
   justify-items: center;
   align-items:center;
 
-  a {
-    grid-column: 1 / 4;
+  Link {
+    grid-column: 1 / 2;
   }
   
   img {
-    height: 20vh;
-    grid-column: 5 / 8;
+    height: 150px;
+    grid-column: 2 / 3;
   }
 
   Button {
-    grid-column: 9 / 13;
+    grid-column: 3 / 4;
   }
-`;
- */
+`; */

@@ -18,6 +18,7 @@ const Header = (props) => {
             case "/":
                 return (
                     <>
+                        <Link color="inherit"></Link>
                         <img src={logo} />
                         <Button variant="contained" size="large" onClick={() => goToPokemonList(navigate)}>Pokédex</Button>
                     </>
@@ -25,16 +26,17 @@ const Header = (props) => {
             case "/pokemonlist":
                 return (
                     <>
-                        <Link component="button" color="inherit" onClick={() => goToHomePage(navigate)}>Todos Pokémons</Link>
+                        <Link color="inherit" onClick={() => goToHomePage(navigate)}>Todos Pokémons</Link>
                         <img src={logo} />
+                        <Link color="inherit">      </Link>
                     </>
                 );
             case `/pokemondetails/${name.name}`:
                 return (
                     <>
-                        <Link component="button" color="inherit" onClick={() => goToHomePage(navigate)}>Todos Pokémons</Link>
+                        <Link color="inherit" onClick={() => goToHomePage(navigate)}>Todos Pokémons</Link>
                         <img src={logo} />
-                        <Button variant="contained" size="large" background="#ff6262" onClick={() => removeFromPokedex(name)}>Excluir da Pokédex</Button>
+                        <Button variant="contained" size="large" background="#ff6262" onClick={() => removeFromPokedex(name.name)}>Excluir da Pokédex</Button>
                     </>
                 );
             default:
