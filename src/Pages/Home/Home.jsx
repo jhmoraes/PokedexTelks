@@ -5,7 +5,7 @@ import GlobalStateContext from "../../global/GlobalStateContext";
 import PokemonCard from "../../Components/PokemonCard/PokemonCard"
 
 const Home = () => {
-    //teste
+    //testando
     const { allPokemons, pokedex, addToPokedex } = useContext(GlobalStateContext);
 
     const filteredPokeList = () =>
