@@ -74,14 +74,17 @@ export const NameCard = styled.div`
   border-radius: 5px;
 `;
 
-export const MoviesCard = styled.div`
+export const MovesCard = styled.div`
   grid-row: 2 / 5;
   grid-column: 3 / 4;
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  padding: 20px
+  padding: 20px;
+  gap: 10px;
 `;
 
 export const ImageLarge = styled.img`
@@ -118,4 +121,4 @@ export const TypesContainer = styled.div`
 
 export const B = styled.b`
   gap: 10px;
-`
+`;

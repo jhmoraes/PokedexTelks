@@ -10,7 +10,6 @@ export const ContainerHeader = Styled.div`
   
   Link {
     position: relative;
-    //left: 20%;
   }
 
   img {
@@ -22,6 +21,7 @@ export const ContainerHeader = Styled.div`
   Button{
     position: relative;
     right: 1px;
+    padding: 15px 70px 15px 70px;
   }
 `;
 

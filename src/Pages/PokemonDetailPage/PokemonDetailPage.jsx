@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../Components/Header/Header"
-import { Container, ImgLogo, Title, DetailsCard, BaseStats, ImgFront, ImgBack, NameCard, MoviesCard, ImageLarge, PokemonNumber, PokemonName, TypesContainer, B } from "./pokemonDetailPageStyled"
+import { Container, ImgLogo, Title, DetailsCard, BaseStats, ImgFront, ImgBack, NameCard, MovesCard, ImageLarge, PokemonNumber, PokemonName, TypesContainer, B } from "./pokemonDetailPageStyled"
 import logo from "../../assets/pngwing 2.png"
 import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
@@ -38,8 +38,6 @@ const PokemonDetailPage = () => {
                 console.log(err.response)
             });
     }
-
-    console.log(pokemonDetails.moves)
 
     return (
         <>
@@ -118,14 +116,14 @@ const PokemonDetailPage = () => {
                             </TypesContainer>
                         </div>
                     </NameCard>
-                    <MoviesCard>
+                    <MovesCard>
                         <B>Moves:</B>
-                        {pokemonDetails.moves && pokemonDetails.moves.slice(0, 5).map((move) => (
-                            <Box component="section" sx={{ p: 2, border: '1px dashed grey', borderRadius: 4 }}>
-                                {move.name}
+                        {pokemonDetails.moves && pokemonDetails.moves.slice(0, 5).map((move) => (                            
+                            <Box width={150} component="section" sx={{ p: 1, border: '1px dashed grey', borderRadius: 4, bgcolor:"lightgray" }} key={move.move.url}>
+                                {move.move.name}
                             </Box>
-                        ))}
-                    </MoviesCard>
+                    ))}
+                    </MovesCard>
                     <div>
                         <ImageLarge src={pokemonDetails.sprites?.front_default} />
                     </div>
