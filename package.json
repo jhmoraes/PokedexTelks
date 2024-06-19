@@ -1,6 +1,7 @@
 {
   "name": "pokedextelks",
   "version": "0.1.0",
+  "homepage": "https://jhmoraes.github.io/PokedexTelks",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
@@ -23,6 +24,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
