@@ -10,7 +10,7 @@ const Router = () => {
     <GlobalState>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route index element={<Home />} />
           <Route path="/pokemondetails/:name" element={<PokemonDetailPage />} />
           <Route path="/pokemonlist" element={<PokemonListPage />} />
           <Route path="*" element={<Error />} />
