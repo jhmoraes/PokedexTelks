@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/pokedextelks/static/js/main.187d4877.js",
+    "static/media/logo.png": "/pokedextelks/static/media/logo.5b8a5f1101a4404b9428.png",
+    "index.html": "/pokedextelks/index.html",
+    "main.187d4877.js.map": "/pokedextelks/static/js/main.187d4877.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.187d4877.js"
+  ]
+}
